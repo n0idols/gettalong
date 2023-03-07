@@ -58,6 +58,10 @@ export default function Navbar() {
             {links.map((link) => (
               <a href={link.href}>{link.text}</a>
             ))}
+            <a href="/account" className="bg-">
+              Account
+            </a>
+
             <button
               onClick={() => setMob(!isMob)}
               className="flex items-center md:hidden"
