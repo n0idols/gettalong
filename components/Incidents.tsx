@@ -12,8 +12,8 @@ export default function Incidents() {
         <>Loading...</>
       ) : (
         <>
-          {incidentsQuery.data?.data.map((incident) => (
-            <Incident incident={incident} />
+          {incidentsQuery.data?.data.map((incident, idx) => (
+            <Incident key={idx} incident={incident} />
           ))}
         </>
       )}

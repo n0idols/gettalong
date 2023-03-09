@@ -1,12 +1,11 @@
 "use client";
 
-import axios from "axios";
-import { useMutation } from "@tanstack/react-query";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 
 import useCreateIncident from "@/hooks/useCreateIncident";
 import useArguments from "@/hooks/useArguments";
 import useIntensity from "@/hooks/useIntensity";
+import { FormEvent } from "react";
 
 export default function AddIncidentForm() {
   const incidentMutation = useCreateIncident();
@@ -20,20 +19,20 @@ export default function AddIncidentForm() {
   });
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const handleArgument = (e) => {
+  const handleArgument = (e: FormEvent) => {
     setValues({
       ...values,
       argumentId: e.target.value,
     });
   };
-  const handleIntensity = (e) => {
+  const handleIntensity = (e: FormEvent) => {
     setValues({
       ...values,
       intensityId: e.target.value,
     });
   };
 
-  async function submitMutation(e: React.FormEvent) {
+  async function submitMutation(e: FormEvent) {
     e.preventDefault();
     incidentMutation.mutate(values);
     setModalOpen(false);
@@ -61,14 +60,16 @@ export default function AddIncidentForm() {
         <form onSubmit={submitMutation} className=" flex flex-col">
           <label htmlFor="argument">Argument Topic</label>
           <select name="" id="" onChange={handleArgument}>
-            {argumentQuery.data?.data.map((argument) => (
-              <option value={argument.id}>{argument.name}</option>
+            {argumentQuery.data?.data.map((argument, idx) => (
+              <option key={idx} value={argument.id}>
+                {argument.name}
+              </option>
             ))}
           </select>
           <label htmlFor="date">Intensity</label>
           <select name="" id="" onChange={handleIntensity}>
-            {intensityQuery.data?.data.map((intense, i) => (
-              <option value={intense.id}>
+            {intensityQuery.data?.data.map((intense, idx) => (
+              <option key={idx} value={intense.id}>
                 {intense.amount + " - " + intense.description}
               </option>
             ))}

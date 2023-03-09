@@ -20,22 +20,24 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className=" bg-gray-50 ">
+    <nav className="bg-gray-100">
       <div className="mx-auto max-w-6xl p-4">
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           {/* LOGO */}
-          <div>
-            <h1 className="text-3xl font-black ">Gettalong</h1>
-          </div>
+
+          <p className="text-3xl font-bold ">Gettalong</p>
+
           {/* Primary Nav */}
           <div className="hidden items-center justify-center space-x-6 text-sm font-light md:flex">
-            {links.map((link) => (
-              <a href={link.href}>{link.text}</a>
+            {links.map((link, idx) => (
+              <a key={idx} href={link.href}>
+                {link.text}
+              </a>
             ))}
           </div>
 
           {/* secondary nav */}
-          <div className=" hidden items-center space-x-4 text-sm font-light md:flex">
+          <div className="hidden items-center space-x-4 text-sm font-light md:flex">
             <a href="/account">Account</a>
           </div>
 
@@ -52,8 +54,10 @@ export default function Navbar() {
       {isMob ? (
         <div className="bg-gray-200 absolute h-full w-full bg-primary md:hidden">
           <div className="flex flex-col p-8 space-y-8">
-            {links.map((link) => (
-              <a href={link.href}>{link.text}</a>
+            {links.map((link, idx) => (
+              <a key={idx} href={link.href}>
+                {link.text}
+              </a>
             ))}
             <a href="/account" className="bg-">
               Account
