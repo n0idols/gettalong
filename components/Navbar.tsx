@@ -6,29 +6,26 @@ export default function Navbar() {
 
   const links = [
     {
-      href: "/",
-      text: "Link 1",
+      href: "/incidents",
+      text: "Incidents",
     },
     {
-      href: "/",
-      text: "Link 2",
+      href: "/arguments",
+      text: "Arguments",
     },
     {
-      href: "/",
-      text: "Link 3",
+      href: "/stats",
+      text: "Stats",
     },
   ];
 
   return (
     <nav className=" bg-gray-50 ">
-      <div className="mx-auto max-w-6xl p-2">
+      <div className="mx-auto max-w-6xl p-4">
         <div className="flex justify-between">
           {/* LOGO */}
           <div>
-            <h1 className="text-3xl font-bold italic">
-              <span className="font-thin">// </span>
-              Logo
-            </h1>
+            <h1 className="text-3xl font-black ">Gettalong</h1>
           </div>
           {/* Primary Nav */}
           <div className="hidden items-center justify-center space-x-6 text-sm font-light md:flex">

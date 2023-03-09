@@ -1,15 +1,12 @@
 import Hero from "@/components/Hero";
 import IncidentForm from "@/components/IncidentForm";
+import Incidents from "@/components/Incidents";
 
 export default function page() {
   return (
-    <>
-      <Hero
-        hook="Welcome"
-        subhook="Experience our legendary service"
-        cta="learn more"
-      />
+    <section>
+      <Incidents />
       <IncidentForm />
-    </>
+    </section>
   );
 }
